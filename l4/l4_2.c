@@ -6,12 +6,6 @@ typedef struct{
     int ano;
 }   tData;
 
-tData leData(){
-    tData data;
-    scanf("%d %d %d", &data.dia, &data.mes, &data.ano);
-    return data;
-}
-
 int ehAnoBissexto(int ano){
     return (ano % 4 == 0);
 }
@@ -116,6 +110,15 @@ tData mudaData(tData data){
 
 void ImprimeData(tData data){
     printf("'%02d/%02d/%04d'\n", data.dia, data.mes, data.ano);
+}
+
+tData leData(){
+    int bissexto;
+    tData data;
+    scanf("%d %d %d", &data.dia, &data.mes, &data.ano);
+    bissexto = ehAnoBissexto(data.ano);
+    data = acertaData(data, bissexto);
+    return data;
 }
 
 int main(){
